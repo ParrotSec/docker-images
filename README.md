@@ -7,6 +7,8 @@ Dockerized version of Parrot GNU/Linux.
 - You can build your images based on these images with your preferred tools and versions.
 - Multiple instances can be run in the same time with minimal resource usage.
 
+![Screenshot of Dockerized Parrot](screenshot.png)
+
 ## Usage
 If you do not have Docker, you can install it with:
 ```
@@ -19,14 +21,26 @@ Basic usage of pre-builded 'headless' image (runs latest version):
 docker run -it guray/dockerized-parrot
 ```
 
+## Different Versions
 There are three versions, all available from Docker Hub or you can build your own:
 - Core Only
 - Headless
 - Standard
 Image size increases to downwards on the list.
 
+Images are tagged with their latest build with their names. So you can use them directly with these commands:
+```
+docker run -it guray/dockerized-parrot:coreonly
+docker run -it guray/dockerized-parrot:headless
+docker run -it guray/dockerized-parrot:standard
+```
+
+## Old Versions and Tags
+Different tags and old versions can be accessed from Docker Hub page for `dockerized-parrot` repo. You can reach the repo from [Docker Hub Repository Link](https://hub.docker.com/r/guray/dockerized-parrot/ "here").
+
+## Minimal Image
 Core only image is minimal, but does not include lots of useful packages. It is suitable for creating your own image with your favourite tools.
-i
+
 Headless image and standard image includes many tools. Headless has 'parrot-pico' package while standard image includes 'parrot-tools' package.
 
 
@@ -47,5 +61,8 @@ Also, you may want to remove container when it is exited:
 docker run -it --rm guray/dockerized-parrot
 ```
 
+## Donation
+ETH: 0x26e13f0a138d6c6214466612ba10e1bf7ec4ce06
+BTC: 1M2oS8DtavqomUmcXkbeXF4sZ84f4RMAPq
 
 
