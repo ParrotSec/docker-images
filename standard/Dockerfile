@@ -1,4 +1,4 @@
-FROM parrot-core:latest
+FROM parrotsec/parrot-core:latest
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 
