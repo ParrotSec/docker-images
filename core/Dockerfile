@@ -1,11 +1,11 @@
 FROM debian:9
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
+ENV VERSION 3.11-1
 
 # Prepare environment
-RUN apt-get update; apt-get -y dist-upgrade;
-RUN apt-get -y install apt-transport-https gnupg apt-utils wget
-RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
+RUN apt-get update; apt-get -y dist-upgrade;apt-get -y install apt-transport-https dirmngr gnupg apt-utils wget;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
+
 # Migrate from Debian to Parrot
 RUN echo > /etc/apt/sources.list;\
 	echo "deb http://deb.parrotsec.org/parrot stable main contrib non-free" > /etc/apt/sources.list.d/parrot.list;\
