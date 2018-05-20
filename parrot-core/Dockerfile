@@ -1,7 +1,7 @@
 FROM debian:9
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 3.11-1
+ENV VERSION 4.0.1
 
 # Prepare environment
 RUN apt-get update; apt-get -y dist-upgrade;apt-get -y install apt-transport-https dirmngr gnupg apt-utils wget;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections

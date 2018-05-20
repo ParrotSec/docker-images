@@ -1,13 +1,15 @@
 # parrot
-Official Parrot Security image with basic tools.
+Official Parrot Security image with basic security tools.
 
 ## Install/Update from docker cloud
 ```docker pull parrotsec/parrot```
 
 ## Install/Update from local Dockerfile
+```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+
 ```docker build -t parrot[:version] parrot```
 
-## Start with no persistence
+## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
@@ -15,15 +17,6 @@ public image from docker cloud
 
 local image from Dockerfile
 ```docker run -ti -network host parrot```
-
-## Start with persistence
-changes are preserved
-
-public image from docker cloud
-```docker run -ti -v parrot:/ --network host parrotsec/parrot```
-
-local image from Dockerfile
-```docker run -ti -v parrot:/ --network host parrot```
 
 
 
@@ -36,9 +29,11 @@ Official Parrot Security Base system without tools.
 ```docker pull parrotsec/parrot-core```
 
 ## Install/Update from local Dockerfile
+```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+
 ```docker build -t parrot-core[:version] parrot-core```
 
-## Start with no persistence
+## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
@@ -46,15 +41,6 @@ public image from docker cloud
 
 local image from Dockerfile
 ```docker run -ti -network host parrot-core```
-
-## Start with persistence
-changes are preserved
-
-public image from docker cloud
-```docker run -ti -v parrot-core:/ --network host parrotsec/parrot-core```
-
-local image from Dockerfile
-```docker run -ti -v parrot-core:/ --network host parrot-core```
 
 
 
@@ -65,9 +51,11 @@ Parrot Security Metasploit bundle
 ```docker pull parrotsec/metasploit```
 
 ## Install/Update from local Dockerfile
+```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+
 ```docker build -t metasploit[:version] metasploit```
 
-## Start with no persistence
+## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
@@ -75,12 +63,3 @@ public image from docker cloud
 
 local image from Dockerfile
 ```docker run -ti -network host metasploit```
-
-## Start with persistence
-changes are preserved
-
-public image from docker cloud
-```docker run -ti -v metasploit:/ --network host parrotsec/metasploit```
-
-local image from Dockerfile
-```docker run -ti -v metasploit:/ --network host metasploit```
