@@ -1,7 +1,7 @@
 FROM debian:9
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.1.1
+ENV VERSION 4.2-1
 
 # Prepare environment
 RUN apt-get update;apt-get -y --no-install-recommends install apt-transport-https dirmngr gnupg apt-utils wget ca-certificates;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections; rm -rf /var/lib/apt/lists/*

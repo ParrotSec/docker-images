@@ -3,27 +3,25 @@
 set -e
 
 echo "configuring sbuildrc"
-echo -e "
-# Mail address where logs are sent to (mandatory, no default!)
-$mailto = 'builder@parrotsec.org';
-$distribution = 'parrot';
-$build_arch_all = 1;
+echo "writing /home/builder/.sbuildrc"
+echo -e "\
+\$mailto = 'builder@parrotsec.org';\n\
+\$distribution = 'parrot';\n\
+\$build_arch_all = 1;\n\
+\n\
+1;" > $HOME/.sbuildrc
+cat $HOME/.sbuildrc
 
-# don't remove this, Perl needs it:
-1;" > /home/builder/.sbuildrc
+echo "writing /home/builder/.mk-sbuild.rc"
+echo -e "\
+SCHROOT_CONF_SUFFIX=\"source-root-users=root,sbuild,admin,builder\n\
+source-root-groups=root,sbuild,admin,builder\n\
+preserve-environment=true\"\n\
+SKIP_UPDATES='1'\n\
+SKIP_PROPOSED='1'\n\
+DEBOOTSTRAP_INCLUDE='devscripts ubuntu-dev-tools ca-certificates parrot-archive-keyring gnupg'\n\
+" > $HOME/.mk-sbuild.rc
+cat $HOME/.mk-sbuild.rc
 
-echo -e "
-SCHROOT_CONF_SUFFIX='source-root-users=root,sbuild,admin,builder
-source-root-groups=root,sbuild,admin,builder
-preserve-environment=true'
-SKIP_UPDATES='1'
-SKIP_PROPOSED='1'
-DEBOOTSTRAP_INCLUDE='devscripts ubuntu-dev-tools ca-certificates parrot-archive-keyring gnupg'
-" > /home/builder/.mk-sbuild.rc
-
-sbuild-update --keygen
-
-mk-sbuild parrot --arch=amd64 --skip-updates --debootstrap-mirror=http://archive.parrotsec.org/parrot --distro=debian
-mk-sbuild parrot --arch=i386 --skip-updates --debootstrap-mirror=http://archive.parrotsec.org/parrot --distro=debian
-mk-sbuild parrot --arch=arm64 --skip-updates --debootstrap-mirror=http://archive.parrotsec.org/parrot --distro=debian
-mk-sbuild parrot --arch=armhf --skip-updates --debootstrap-mirror=http://archive.parrotsec.org/parrot --distro=debian
+#echo "running sbuild-update --keygen"
+#sbuild-update --keygen

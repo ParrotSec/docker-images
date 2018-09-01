@@ -1,7 +1,7 @@
 FROM parrotsec/parrot-core:latest
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.16.65-4.1.1
+ENV VERSION 4.17.8-4.2
 
 # Install components
 RUN apt-get update; apt-get -y dist-upgrade;apt-get -y --no-install-recommends install parrot-menu;apt-get -y install parrot-pico metasploit-framework postgresql; rm -rf /var/lib/apt/lists/*
