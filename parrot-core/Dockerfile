@@ -22,5 +22,9 @@ RUN apt-get update;\
 	apt-get clean;\
 	apt-get autoclean;\
 	rm -rf /var/lib/apt/lists/*
+RUN apt-get update;\
+	apt-get -y full-upgrade;\
+	apt-get -y autoremove;\
+	rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT bash $@
