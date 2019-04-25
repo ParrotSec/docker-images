@@ -1,7 +1,7 @@
 FROM parrotsec/parrot-core:4.6
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.6-1
+ENV VERSION 4.6-2
 
 # Install components
 RUN apt-get update; apt-get -y dist-upgrade;apt-get -y install parrot-pico;apt-get -y install parrot-mini parrot-tools-cloud; rm -rf /var/lib/apt/lists/*
