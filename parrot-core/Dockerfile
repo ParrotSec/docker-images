@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:buster
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 4.6-3
