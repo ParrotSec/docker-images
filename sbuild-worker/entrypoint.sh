@@ -2,7 +2,7 @@
 
 set -e
 
-DEBUILD_DEPENDENCIES="parrot-archive-keyring,ca-certificates,eatmydata,ccache,gnupg,dirmngr,devscripts,dh-autoreconf,dh-systemd,ubuntu-dev-tools,debhelper,moreutils,dh-apparmor,dh-di,dh-exec,dh-make,dh-python"
+DEBUILD_DEPENDENCIES="parrot-archive-keyring,ca-certificates,eatmydata,ccache,gnupg2,dirmngr,devscripts,debhelper,dh-autoreconf,ubuntu-dev-tools,moreutils,dh-apparmor,dh-di,dh-exec,dh-make,dh-python"
 CHROOT_AMD64="/var/lib/schroot/chroots/parrot-amd64"
 CHROOT_I386="/var/lib/schroot/chroots/parrot-i386"
 CHROOT_ARM64="/var/lib/schroot/chroots/parrot-arm64"
@@ -18,7 +18,7 @@ function amd64_build {
 	fi
 	
 	if [ -d $CHROOT_AMD64 ];then
-		echo -e "deb http://archive.parrotsec.org/parrot stable main contrib non-free\ndeb-src http://archive.parrotsec.org/parrot testing main contrib non-free"\
+		echo -e "deb http://deb.parrotsec.org/parrot testing main contrib non-free\ndeb-src http://deb.parrotsec.org/parrot testing main contrib non-free"\
 		 > $CHROOT_AMD64/etc/apt/sources.list
 		schroot -u root -d / -c source:parrot-amd64 -- apt update
 		schroot -u root -d / -c source:parrot-amd64 -- apt -y full-upgrade
