@@ -1,10 +1,10 @@
-FROM debian:buster
+FROM debian:testing-slim
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.7-3
+ENV VERSION 4.8-1
 
 # Prepare environment
-RUN apt-get update;apt-get -y --no-install-recommends install apt-transport-https dirmngr gnupg apt-utils wget ca-certificates; rm -rf /var/lib/apt/lists/* #;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
+RUN apt-get update;apt-get -y --no-install-recommends install dirmngr gnupg apt-utils wget ca-certificates; rm -rf /var/lib/apt/lists/* #;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
 
 # Migrate from Debian to Parrot
 RUN echo > /etc/apt/sources.list;\
@@ -13,12 +13,13 @@ RUN echo > /etc/apt/sources.list;\
 	wget -qO - https://deb.parrot.sh/parrot/misc/parrotsec.gpg | apt-key add -;\
 	apt-get update;\
 	apt-get -y dist-upgrade;\
+	apt-get -y autoremove;\
 	rm -rf /var/lib/apt/lists/*
 
 
 # Install Parrot Core
 RUN apt-get update;\
-	apt-get -y --no-install-recommends --no-install-suggests install parrot-core apt-parrot base-files;\
+	apt-get -y --no-install-recommends --no-install-suggests install parrot-core base-files;\
 	apt-get -y autoremove;\
 	apt-get clean;\
 	apt-get autoclean;\

@@ -1,65 +1,65 @@
-# parrot
+# Parrot Security rolling
 Official Parrot Security image with basic security tools.
 
 ## Install/Update from docker cloud
-```docker pull parrotsec/parrot```
+```docker pull parrotsec/security```
 
 ## Install/Update from local Dockerfile
-```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+```git clone https://nest.parrotsec.org/parrot/docker-images && cd docker-images```
 
-```docker build -t parrot[:version] parrot```
+```docker build -t parrot-security[:version] security/rolling```
 
 ## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
-```docker run -ti --network host parrotsec/parrot```
+```docker run -ti --network host parrotsec/security```
 
 local image from Dockerfile
-```docker run -ti -network host parrot```
+```docker run -ti -network host security/rolling```
 
 
 
 
 
-# parrot-core
-Official Parrot Security Base system without tools.
+# Parrot Core rolling
+Official Parrot Core image.
 
 ## Install/Update from docker cloud
-```docker pull parrotsec/parrot-core```
+```docker pull parrotsec/core```
 
 ## Install/Update from local Dockerfile
-```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+```git clone https://nest.parrotsec.org/parrot/docker-images && cd docker-images```
 
-```docker build -t parrot-core[:version] parrot-core```
+```docker build -t parrot-core[:version] core/rolling```
 
 ## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
-```docker run -ti --network host parrotsec/parrot-core```
+```docker run -ti --network host parrotsec/core```
 
 local image from Dockerfile
-```docker run -ti -network host parrot-core```
+```docker run -ti -network host core/rolling```
 
 
 
-# metasploit
-Parrot Security Metasploit bundle
+# Parrot Core LTS
+Official Parrot Core image.
 
 ## Install/Update from docker cloud
-```docker pull parrotsec/metasploit```
+```docker pull parrotsec/core```
 
 ## Install/Update from local Dockerfile
-```git clone https://dev.parrotsec.org/parrot/docker-images && cd docker-images```
+```git clone https://nest.parrotsec.org/parrot/docker-images && cd docker-images```
 
-```docker build -t metasploit[:version] metasploit```
+```docker build -t parrot-core[:version] core/lts```
 
 ## Start a new instance
 changes are discarded on exit
 
 public image from docker cloud
-```docker run -ti --network host parrotsec/metasploit```
+```docker run -ti --network host parrotsec/core```
 
 local image from Dockerfile
-```docker run -ti -network host metasploit```
+```docker run -ti -network host core/lts```
