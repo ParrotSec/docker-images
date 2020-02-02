@@ -12,14 +12,14 @@ RUN echo > /etc/apt/sources.list;\
 	echo "deb https://mirror.parrot.sh/parrot rolling-security main contrib non-free" >> /etc/apt/sources.list.d/parrot.list;\
 	wget -qO - https://deb.parrot.sh/parrot/misc/parrotsec.gpg | apt-key add -;\
 	apt-get update;\
-	apt-get -y dist-upgrade;\
+	apt-get -y --allow-downgrades dist-upgrade;\
 	apt-get -y autoremove;\
 	rm -rf /var/lib/apt/lists/*
 
 
 # Install Parrot Core
 RUN apt-get update;\
-	apt-get -y --no-install-recommends --no-install-suggests install parrot-core base-files;\
+	apt-get -y --no-install-recommends --allow-downgrades --no-install-suggests install parrot-core base-files;\
 	apt-get -y autoremove;\
 	apt-get clean;\
 	apt-get autoclean;\

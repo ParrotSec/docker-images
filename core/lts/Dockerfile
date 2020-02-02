@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 4.8-1
 
 # Prepare environment
-RUN apt-get update;apt-get -y --no-install-recommends install dirmngr gnupg apt-utils wget ca-certificates; rm -rf /var/lib/apt/lists/* #;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
+RUN apt-get update;apt-get -y --allow-downgrades --no-install-recommends install dirmngr gnupg apt-utils wget ca-certificates; rm -rf /var/lib/apt/lists/* #;echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
 
 # Migrate from Debian to Parrot
 RUN echo > /etc/apt/sources.list;\
@@ -19,7 +19,7 @@ RUN echo > /etc/apt/sources.list;\
 
 # Install Parrot Core
 RUN apt-get update;\
-	apt-get -y --no-install-recommends --no-install-suggests install parrot-core base-files;\
+	apt-get -y --no-install-recommends --allow-downgrades --no-install-suggests install parrot-core base-files;\
 	apt-get -y autoremove;\
 	apt-get clean;\
 	apt-get autoclean;\
