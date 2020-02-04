@@ -11,7 +11,7 @@ core-lts-i386:
 	docker build -t parrotsec/core:lts-i386 core/lts-i386/
 
 core-lts-arm64:
-	docker build -t parrotsec/core:lts- core/lts-arm64/
+	docker build -t parrotsec/core:lts-arm64 core/lts-arm64/
 
 core-lts-armhf:
 	docker build -t parrotsec/core:lts-armhf core/lts-armhf/
@@ -40,7 +40,7 @@ builder-lts-i386: core-lts-i386
 	docker build -t parrotsec/build:lts-i386 build/lts-i386/
 
 builder-lts-arm64: core-lts-arm64
-	docker build -t parrotsec/build:lts- build/lts-arm64/
+	docker build -t parrotsec/build:lts-arm64 build/lts-arm64/
 
 builder-lts-armhf: core-lts-armhf
 	docker build -t parrotsec/build:lts-armhf build/lts-armhf/
