@@ -81,6 +81,15 @@ provides the following packages:
 * netcat
 * telnet
 
+usage: 
+`docker run --rm -ti parrotsec/tools-nmap <nmap options>`
+
+examples:
+
+`docker run --rm -ti parrotsec/tools-nmap -F 192.168.1.1`
+
+`docker run --rm -ti parrotsec/tools-nmap -Pn 89.36.210.176`
+
 ### parrotsec/tools-metasploit
 based on parrotsec/tools-nmap:latest
 provides the following packages:
@@ -88,25 +97,47 @@ provides the following packages:
 * metasploit-framework
 * postgresql
 
+usage:
+
+`docker run --rm -ti --network host -v $PWD/msf:/root/ parrotsec/tools-metasploit`
+
 ### parrotsec/tools-set
 based on parrotsec/tools-metasploit:latest
 provides the following packages:
 * set
+
+usage:
+
+`docker run --rm -ti --network host -v $PWD/set:/root/.set parrotsec/tools-set`
 
 ### parrotsec/tools-beef
 based on parrotsec/core:rolling-amd64
 provides the following packages:
 * beef-xss
 
+usage:
+
+`docker run --rm --network host -ti -v $PWD/beef:/var/lib/beef-xss parrosec/tools-beef`
+
 ### parrotsec/tools-bettercap
 based on parrotsec/core:rolling-amd64
 provides the following packages:
 * bettercap
 
+usage:
+
+`docker run --rm -ti parrotsec/tools-bettercap`
+
 ### parrotsec/tools-sqlmap
 based on parrotsec/core:rolling-amd64
 provides the following packages:
 * sqlmap
+
+usage:
+`docker run --rm -ti parrotsec/tools-sqlmap <sqlmap options>`
+
+example:
+`docker run --rm -ti parrotsec/tools-sqlmap -u parrotsec.org --wizard`
 
 
 ## parrosec/build
