@@ -1,4 +1,4 @@
-FROM parrotsec/core:rolling
+FROM parrotsec/tools-nmap:rolling
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 5.0.74-4.8
