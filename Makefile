@@ -64,6 +64,8 @@ security-rolling: core-rolling
 security-lts: core-lts
 	docker build -t parrotsec/security:lts security/lts/
 
+security: security-rolling security-lts
+
 tools-nmap: core-rolling
 	docker build -t parrotsec/tools-nmap tools/nmap
 
@@ -78,7 +80,7 @@ tools: tools-nmap tools-metasploit tools-set
 	docker build -t parrotsec/tools-beef tools/beef
 	docker build -t parrotsec/tools-sqlmap tools/sqlmap
 
-build: core builder security-rolling security-lts metasploit
+build: core builder security tools
 
 upload: build
 	docker push parrotsec/core
