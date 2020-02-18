@@ -6,7 +6,7 @@ Docker uses template images, and allows the user to start several instances of t
 
 Parrot uses docker to allow its users to use its vast arsenal of tools on any platform supported by docker.
 
-[skip to usage examples](https://nest.parrot.sh/infra/docker-images/blob/master/README.md#general-usage-instructions-and-examples)
+[skip to usage examples](#general-usage-instructions-and-examples)
 
 # Available Templates
 
