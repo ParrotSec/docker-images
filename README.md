@@ -101,7 +101,7 @@ based on parrotsec/core:rolling-amd64
 provides the following packages:
 * bettercap
 
-### parrotsec/tools-metasploit
+### parrotsec/tools-sqlmap
 based on parrotsec/core:rolling-amd64
 provides the following packages:
 * sqlmap
