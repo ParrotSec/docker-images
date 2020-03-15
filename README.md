@@ -6,6 +6,26 @@ Docker uses template images, and allows the user to start several instances of t
 
 Parrot uses docker to allow its users to use its vast arsenal of tools on any platform supported by docker.
 
+[Parrot Core](#parrotseccore)
+
+[Parrot Security](#parrotsecsecurity)
+
+[Nmap](#parrotsectools-nmap)
+
+[Metasploit](#parrotsectools-metasploit)
+
+[Social Engineering Toolkit](#parrotsectools-set)
+
+[Beef-XSS](#parrotsectools-beef)
+
+[Bettercap](#parrotsectoos-bettercap)
+
+[SQLMap](#parrotsectools-sqlmap)
+
+[Builder Container](#parrotsecbuild)
+
+
+
 [skip to usage examples](#general-usage-instructions-and-examples)
 
 # Available Templates
