@@ -8,7 +8,7 @@ Parrot uses docker to allow its users to use its vast arsenal of tools on any pl
 
 [Parrot Core](#parrotseccore)
 
-[Parrot Security](#parrotsecsecurity)
+[Parrot Security](#parrosecsecurity)
 
 [Nmap](#parrotsectools-nmap)
 
