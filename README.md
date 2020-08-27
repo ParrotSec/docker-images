@@ -19,26 +19,26 @@ You can use it as a start point to create your custom containers.
 
 available flavors:
 
-**parrosec/core:latest** based on parrot rolling (debian testing) amd64
+**parrotsec/core:latest** based on parrot rolling (debian testing) amd64
 
-**parrosec/core:rolling-amd64** based on parrot rolling (debian testing) amd64
+**parrotsec/core:rolling-amd64** based on parrot rolling (debian testing) amd64
 
-**parrosec/core:rolling-i386** based on parrot rolling (debian testing) i386
+**parrotsec/core:rolling-i386** based on parrot rolling (debian testing) i386
 
-**parrosec/core:lts-amd64** based on parrot lts (devuan stable) amd64
+**parrotsec/core:lts-amd64** based on parrot lts (devuan stable) amd64
 
-**parrosec/core:lts-i386** based on parrot lts (devuan stable) i386
+**parrotsec/core:lts-i386** based on parrot lts (devuan stable) i386
 
-**parrosec/core:lts-arm64** based on parrot lts (devuan stable) arm64
+**parrotsec/core:lts-arm64** based on parrot lts (devuan stable) arm64
 
-**parrosec/core:lts-armhf** based on parrot lts (devuan stable) armhf
+**parrotsec/core:lts-armhf** based on parrot lts (devuan stable) armhf
 
 launch the container:
 
 `docker run --rm -ti --network host -v $PWD/work:/work parrotsec/core:lts-amd64`
 
 
-## parrosec/security
+## parrotsec/security
 
 This container includes a huge collection of tools that can be used via command line from inside a docker container.
 
@@ -140,7 +140,7 @@ example:
 `docker run --rm -ti parrotsec/tools-sqlmap -u parrotsec.org --wizard`
 
 
-## parrosec/build
+## parrotsec/build
 
 This container is used internally by the Parrot Build Platform to test and build the distro packages.
 
@@ -179,19 +179,19 @@ This container ships with the following packages:
 
 Available flavors:
 
-**parrosec/build:latest** based on parrotsec/core:rolling-amd64
+**parrotsec/build:latest** based on parrotsec/core:rolling-amd64
 
-**parrosec/build:rolling-amd64** based on parrotsec/core:rolling-amd64
+**parrotsec/build:rolling-amd64** based on parrotsec/core:rolling-amd64
 
-**parrosec/build:rolling-i386** based on parrotsec/core:rolling-i386
+**parrotsec/build:rolling-i386** based on parrotsec/core:rolling-i386
 
-**parrosec/build:lts-amd64** based on parrotsec/core:lts-amd64
+**parrotsec/build:lts-amd64** based on parrotsec/core:lts-amd64
 
-**parrosec/build:lts-i386** based on parrotsec/core:lts-i386
+**parrotsec/build:lts-i386** based on parrotsec/core:lts-i386
 
-**parrosec/build:lts-arm64** based on parrotsec/core:lts-arm64
+**parrotsec/build:lts-arm64** based on parrotsec/core:lts-arm64
 
-**parrosec/build:lts-armhf** based on parrotsec/core:lts-armhf
+**parrotsec/build:lts-armhf** based on parrotsec/core:lts-armhf
 
 
 Example usage:
