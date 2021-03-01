@@ -1,7 +1,7 @@
 FROM parrotsec/core:lts-i386
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.8-2
+ENV VERSION 4.11-1
 
 # Don't configure resolvconf symlink
 RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections

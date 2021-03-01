@@ -5,22 +5,27 @@ core-rolling-i386:
 	docker build -t parrotsec/core:rolling-i386 core/rolling-i386/
 
 core-lts-amd64:
-	docker build -t parrotsec/core:lts-amd64 core/lts-amd64/
+	#docker build -t parrotsec/core:lts-amd64 core/lts-amd64/
+	echo skipping core-lts-amd64
 
 core-lts-i386:
-	docker build -t parrotsec/core:lts-i386 core/lts-i386/
+	#docker build -t parrotsec/core:lts-i386 core/lts-i386/
+	echo skipping core-lts-i386
 
 core-lts-arm64:
-	docker build -t parrotsec/core:lts-arm64 core/lts-arm64/
+	#docker build -t parrotsec/core:lts-arm64 core/lts-arm64/
+	echo skipping core-lts-arm64
 
 core-lts-armhf:
-	docker build -t parrotsec/core:lts-armhf core/lts-armhf/
+	#docker build -t parrotsec/core:lts-armhf core/lts-armhf/
+	echo skipping core-lts-armhf
 
 core-rolling:
 	docker build -t parrotsec/core:rolling core/rolling-amd64/
 
 core-lts:
-	docker build -t parrotsec/core:lts core/lts-amd64/
+	#docker build -t parrotsec/core:lts core/lts-amd64/
+	echo skipping core-lts
 
 core-latest:
 	docker build -t parrotsec/core:latest core/rolling-amd64/
@@ -34,22 +39,27 @@ builder-rolling-i386: core-rolling-i386
 	docker build -t parrotsec/build:rolling-i386 build/rolling-i386/
 
 builder-lts-amd64: core-lts-amd64
-	docker build -t parrotsec/build:lts-amd64 build/lts-amd64/
+	#docker build -t parrotsec/build:lts-amd64 build/lts-amd64/
+	echo skipping builder-lts-amd64
 
 builder-lts-i386: core-lts-i386
-	docker build -t parrotsec/build:lts-i386 build/lts-i386/
+	#docker build -t parrotsec/build:lts-i386 build/lts-i386/
+	echo skipping builder-lts-i386
 
 builder-lts-arm64: core-lts-arm64
-	docker build -t parrotsec/build:lts-arm64 build/lts-arm64/
+	#docker build -t parrotsec/build:lts-arm64 build/lts-arm64/
+	echo skipping builder-lts-arm64
 
 builder-lts-armhf: core-lts-armhf
-	docker build -t parrotsec/build:lts-armhf build/lts-armhf/
+	#docker build -t parrotsec/build:lts-armhf build/lts-armhf/
+	echo skipping builder-lts-armhf
 
 builder-rolling: core-rolling
-	docker build -t parrotsec/build:rolling build/rolling-amd64/
+	#docker build -t parrotsec/build:rolling build/rolling-amd64/
 
 builder-lts: core-lts
-	docker build -t parrotsec/build:lts build/lts-amd64/
+	#docker build -t parrotsec/build:lts build/lts-amd64/
+	echo skipping builder-lts
 
 builder-latest: core-latest
 	docker build -t parrotsec/build:latest build/rolling-amd64/
@@ -62,7 +72,8 @@ security-rolling: core-rolling
 	docker build -t parrotsec/security:latest security/rolling/
 
 security-lts: core-lts
-	docker build -t parrotsec/security:lts security/lts/
+	#docker build -t parrotsec/security:lts security/lts/
+	echo skipping security-lts
 
 security: security-rolling security-lts
 

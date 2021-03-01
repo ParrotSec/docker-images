@@ -1,7 +1,7 @@
-FROM parrotsec/core:base-rolling-amd64
+FROM parrotsec/core:base-rolling-i386
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.10-1
+ENV VERSION 4.111-1
 
 # Update base image
 RUN	apt-get update;\
