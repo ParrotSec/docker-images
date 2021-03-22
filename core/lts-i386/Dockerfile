@@ -1,7 +1,7 @@
-FROM parrotsec/core:base-lts-i386
+FROM parrotsec/core:base-chimaera-i386
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
-ENV VERSION 4.11-1
+ENV VERSION 5.0-alpha1
 
 # Update base image
 RUN	apt-get update;\
