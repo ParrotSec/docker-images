@@ -1,0 +1,6 @@
+#!/bin/bash
+service postgresql start || true
+msfdb init || true
+msfdb start || true
+msfd || true
+msfconsole
