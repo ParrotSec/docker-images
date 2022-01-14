@@ -1,4 +1,4 @@
-FROM parrotsec/core:rolling
+FROM docker.io/parrotsec/core:5.0
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 2.29-4.11

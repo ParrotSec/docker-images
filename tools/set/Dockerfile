@@ -1,4 +1,4 @@
-FROM parrotsec/tools-metasploit:latest
+FROM docker.io/parrotsec/tools-metasploit:latest
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 8.0.3-4.11

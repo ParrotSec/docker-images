@@ -1,4 +1,4 @@
-FROM parrotsec/tools-nmap:latest
+FROM docker.io/parrotsec/tools-nmap:latest
 MAINTAINER Lorenzo "Palinuro" Faletra (palinuro@linux.it)
 ENV DEBIAN_FRONTEND noninteractive
 ENV VERSION 6.0.38-4.11

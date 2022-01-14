@@ -1,105 +1,99 @@
-core-rolling-amd64:
-	docker build -t parrotsec/core:rolling-amd64 core/rolling-amd64/
-
-core-rolling-i386:
-	docker build -t parrotsec/core:rolling-i386 core/rolling-i386/
-
-core-lts-amd64:
-	#docker build -t parrotsec/core:lts-amd64 core/lts-amd64/
-	echo skipping core-lts-amd64
-
-core-lts-i386:
-	#docker build -t parrotsec/core:lts-i386 core/lts-i386/
-	echo skipping core-lts-i386
-
-core-lts-arm64:
-	#docker build -t parrotsec/core:lts-arm64 core/lts-arm64/
-	echo skipping core-lts-arm64
-
-core-lts-armhf:
-	#docker build -t parrotsec/core:lts-armhf core/lts-armhf/
-	echo skipping core-lts-armhf
+docker-base:
+	cd docker-base && ./build.sh
 
 core-rolling:
-	docker build -t parrotsec/core:rolling core/rolling-amd64/
+	podman build -t docker.io/parrotsec/core:rolling-amd64 core/rolling-amd64/
 
-core-lts:
-	#docker build -t parrotsec/core:lts core/lts-amd64/
-	echo skipping core-lts
+core: docker-base
+	podman build -t docker.io/parrotsec/core:amd64 core/lts-amd64/
+	podman build -t docker.io/parrotsec/core:i386 core/lts-i386/
+	podman build -t docker.io/parrotsec/core:arm64 core/lts-arm64/
+	podman build -t docker.io/parrotsec/core:armhf core/lts-armhf/
 
-core-latest:
-	docker build -t parrotsec/core:latest core/rolling-amd64/
-
-core: core-rolling core-lts core-latest core-rolling-amd64 core-rolling-i386 core-lts-amd64 core-lts-i386 core-lts-arm64 core-lts-armhf
-
-builder-rolling-amd64: core-rolling-amd64
-	docker build -t parrotsec/build:rolling-amd64 build/rolling-amd64/
-
-builder-rolling-i386: core-rolling-i386
-	docker build -t parrotsec/build:rolling-i386 build/rolling-i386/
-
-builder-lts-amd64: core-lts-amd64
-	#docker build -t parrotsec/build:lts-amd64 build/lts-amd64/
-	echo skipping builder-lts-amd64
-
-builder-lts-i386: core-lts-i386
-	#docker build -t parrotsec/build:lts-i386 build/lts-i386/
-	echo skipping builder-lts-i386
-
-builder-lts-arm64: core-lts-arm64
-	#docker build -t parrotsec/build:lts-arm64 build/lts-arm64/
-	echo skipping builder-lts-arm64
-
-builder-lts-armhf: core-lts-armhf
-	#docker build -t parrotsec/build:lts-armhf build/lts-armhf/
-	echo skipping builder-lts-armhf
-
-builder-rolling: core-rolling
-	#docker build -t parrotsec/build:rolling build/rolling-amd64/
-
-builder-lts: core-lts
-	#docker build -t parrotsec/build:lts build/lts-amd64/
-	echo skipping builder-lts
-
-builder-latest: core-latest
-	docker build -t parrotsec/build:latest build/rolling-amd64/
-
-builder: builder-rolling builder-lts builder-latest builder-rolling-amd64 builder-rolling-i386 builder-lts-amd64 builder-lts-i386 builder-lts-arm64 builder-lts-armhf
+builder:
+	podman build -t docker.io/parrotsec/build:amd64 build/lts-amd64/
+	podman build -t docker.io/parrotsec/build:i386 build/lts-i386/
+	podman build -t docker.io/parrotsec/build:arm64 build/lts-arm64/
+	podman build -t docker.io/parrotsec/build:armhf build/lts-armhf/
 
 
-security-rolling: core-rolling
-	docker build -t parrotsec/security:rolling security/rolling/
-	docker build -t parrotsec/security:latest security/rolling/
+security:
+	podman build -t docker.io/parrotsec/tools-nmap:latest tools/nmap
+	podman build -t docker.io/parrotsec/tools-metasploit:latest tools/metasploit
+	podman build -t docker.io/parrotsec/tools-set:latest tools/set
+	podman build -t docker.io/parrotsec/tools-bettercap:latest tools/bettercap
+	podman build -t docker.io/parrotsec/tools-beef:latest tools/beef
+	podman build -t docker.io/parrotsec/tools-sqlmap:latest tools/sqlmap
+	podman build -t docker.io/parrotsec/security:latest security/lts/
 
-security-lts: core-lts
-	#docker build -t parrotsec/security:lts security/lts/
-	echo skipping security-lts
+build: core-rolling core builder security
 
-security: security-rolling security-lts
+push-docker: build
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:lts-amd64
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:lts
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:latest
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:5
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:5.0
+	podman push docker.io/parrotsec/core:amd64 docker.io/parrotsec/core:5.0.0
 
-tools-nmap: core-rolling
-	docker build -t parrotsec/tools-nmap:latest tools/nmap
+	podman push docker.io/parrotsec/core:arm64 docker.io/parrotsec/core:lts-arm64
+	podman push docker.io/parrotsec/core:arm64 docker.io/parrotsec/core:5-arm64
+	podman push docker.io/parrotsec/core:arm64 docker.io/parrotsec/core:5.0-arm64
+	podman push docker.io/parrotsec/core:arm64 docker.io/parrotsec/core:5.0.0-arm64
 
-tools-metasploit: tools-nmap
-	docker build -t parrotsec/tools-metasploit:latest tools/metasploit
+	podman push docker.io/parrotsec/core:armhf docker.io/parrotsec/core:lts-armhf
+	podman push docker.io/parrotsec/core:i386 docker.io/parrotsec/core:lts-i386
 
-tools-set: tools-metasploit
-	docker build -t parrotsec/tools-set:latest tools/set
+	podman push docker.io/parrotsec/core:rolling-amd64 docker.io/parrotsec/core:rolling-amd64
+	podman push docker.io/parrotsec/core:rolling-amd64 docker.io/parrotsec/core:rolling
 
-tools: tools-nmap tools-metasploit tools-set
-	docker build -t parrotsec/tools-bettercap:latest tools/bettercap
-	docker build -t parrotsec/tools-beef:latest tools/beef
-	docker build -t parrotsec/tools-sqlmap:latest tools/sqlmap
+	podman push docker.io/parrotsec/build:amd64 docker.io/parrotsec/build:latest
+	podman push docker.io/parrotsec/build:amd64 docker.io/parrotsec/build:amd64
+	podman push docker.io/parrotsec/build:arm64 docker.io/parrotsec/build:arm64
+	podman push docker.io/parrotsec/build:i386 docker.io/parrotsec/build:i386
 
-build: core builder security tools
+	podman push docker.io/parrotsec/tools-nmap:latest docker.io/parrotsec/tools-nmap:latest
+	podman push docker.io/parrotsec/tools-metasploit:latest docker.io/parrotsec/tools-metasploit:latest
+	podman push docker.io/parrotsec/tools-set:latest docker.io/parrotsec/tools-set:latest
+	podman push docker.io/parrotsec/tools-bettercap:latest docker.io/parrotsec/tools-bettercap:latest
+	podman push docker.io/parrotsec/tools-beef:latest docker.io/parrotsec/tools-beef:latest
+	podman push docker.io/parrotsec/tools-sqlmap:latest docker.io/parrotsec/tools-sqlmap:latest
+	podman push docker.io/parrotsec/security:latest docker.io/parrotsec/security:latest
+	podman push docker.io/parrotsec/security:latest docker.io/parrotsec/security:5
+	podman push docker.io/parrotsec/security:latest docker.io/parrotsec/security:5.0
+	podman push docker.io/parrotsec/security:latest docker.io/parrotsec/security:5.0.0
 
-upload: build
-	docker push parrotsec/core
-	docker push parrotsec/build
-	docker push parrotsec/security
-	docker push parrotsec/tools-nmap
-	docker push parrotsec/tools-metasploit
-	docker push parrotsec/tools-set
-	docker push parrotsec/tools-bettercap
-	docker push parrotsec/tools-beef
-	docker push parrotsec/tools-sqlmap
+push-parrot: build
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:lts-amd64
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:lts
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:latest
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:5
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:5.0
+	podman push docker.io/parrotsec/core:amd64 registry.parrot.run/core:5.0.0
+
+	podman push docker.io/parrotsec/core:arm64 registry.parrot.run/core:lts-arm64
+	podman push docker.io/parrotsec/core:arm64 registry.parrot.run/core:5-arm64
+	podman push docker.io/parrotsec/core:arm64 registry.parrot.run/core:5.0-arm64
+	podman push docker.io/parrotsec/core:arm64 registry.parrot.run/core:5.0.0-arm64
+
+	podman push docker.io/parrotsec/core:armhf registry.parrot.run/core:lts-armhf
+	podman push docker.io/parrotsec/core:i386 registry.parrot.run/core:lts-i386
+
+	podman push docker.io/parrotsec/core:rolling-amd64 registry.parrot.run/core:rolling-amd64
+	podman push docker.io/parrotsec/core:rolling-amd64 registry.parrot.run/core:rolling
+
+	podman push docker.io/parrotsec/build:amd64 registry.parrot.run/build:latest
+	podman push docker.io/parrotsec/build:amd64 registry.parrot.run/build:amd64
+	podman push docker.io/parrotsec/build:arm64 registry.parrot.run/build:arm64
+	podman push docker.io/parrotsec/build:i386 registry.parrot.run/build:i386
+
+	podman push docker.io/parrotsec/tools-nmap:latest registry.parrot.run/tools-nmap:latest
+	podman push docker.io/parrotsec/tools-metasploit:latest registry.parrot.run/tools-metasploit:latest
+	podman push docker.io/parrotsec/tools-set:latest registry.parrot.run/tools-set:latest
+	podman push docker.io/parrotsec/tools-bettercap:latest registry.parrot.run/tools-bettercap:latest
+	podman push docker.io/parrotsec/tools-beef:latest registry.parrot.run/tools-beef:latest
+	podman push docker.io/parrotsec/tools-sqlmap:latest registry.parrot.run/tools-sqlmap:latest
+	podman push docker.io/parrotsec/security:latest registry.parrot.run/security:latest
+	podman push docker.io/parrotsec/security:latest registry.parrot.run/security:5
+	podman push docker.io/parrotsec/security:latest registry.parrot.run/security:5.0
+	podman push docker.io/parrotsec/security:latest registry.parrot.run/security:5.0.0
