@@ -6,4 +6,6 @@ ENV VERSION 1.5.2-4.11
 # Install components
 RUN apt-get update; apt-get -y dist-upgrade;apt-get -y --no-install-recommends install parrot-menu;apt-get -y install sqlmap; rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT sqlmap $@
+WORKDIR /data
+
+ENTRYPOINT ["sqlmap"]
